@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Эвакуатор с манипулятором и экскаватор - демо лендинга</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#121314;--s1:#1c1d1f;--s2:#26282b;--ink:#f2f2ef;--mut:#a4a7ab;--acc:#ffc21a;--m:clamp(16px,2.4vw,36px);--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.55 Manrope,system-ui,sans-serif;overflow-x:hidden}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--m)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:12px}
+.logo{font:400 20px "Russo One"}.logo b{color:var(--acc)}
+.tel{font:800 20px Manrope;text-decoration:none;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--acc);color:#111;border:0;padding:17px 24px;font:800 17px Manrope;text-decoration:none;cursor:pointer;border-radius:12px;transition:transform .2s var(--ease)}
+.btn:hover{transform:translateY(-2px)}.btn.g{background:var(--s2);color:var(--ink)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:30px;align-items:center;padding:clamp(20px,4vw,50px) 0 clamp(50px,7vw,90px)}
+h1{font:400 clamp(34px,5vw,66px)/1.02 "Russo One";letter-spacing:-.01em}
+h1 span{color:var(--acc)}
+.lead{color:#cfd1d3;font-size:19px;margin:18px 0 26px;max-width:44ch}
+.eta{margin-top:16px;color:var(--mut);font-size:15px}.eta b{color:var(--acc)}
+.scene{background:var(--s1);border-radius:24px;aspect-ratio:5/4;position:relative;overflow:hidden}
+.scene svg{position:absolute;inset:0;width:100%;height:100%}
+.road{animation:road 1.2s linear infinite}@keyframes road{to{stroke-dashoffset:-80}}
+.truck{animation:bob 1.6s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-3px)}}
+.arm{transform-origin:330px 205px;animation:arm 4s ease-in-out infinite}@keyframes arm{0%,100%{transform:rotate(0)}50%{transform:rotate(-14deg)}}
+section{padding:clamp(70px,9vw,120px) 0 0}
+h2{font:400 clamp(28px,3.6vw,46px)/1.05 "Russo One";margin-bottom:12px}
+.sub{color:var(--mut);max-width:58ch;margin-bottom:30px}
+.tech{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.t{background:var(--s1);border-radius:20px;padding:24px;cursor:pointer;border:2px solid transparent;transition:border-color .2s,transform .2s var(--ease)}
+.t:hover{transform:translateY(-4px)}.t.on{border-color:var(--acc)}
+.t b{display:block;font:400 22px "Russo One";margin-bottom:10px}
+.t ul{list-style:none;color:var(--mut);font-size:15px}.t li{padding:3px 0}.t li span{color:var(--ink);font-weight:600}
+.t .pr{margin-top:12px;font:800 20px Manrope;color:var(--acc)}
+.calc{background:var(--s1);border-radius:24px;padding:clamp(20px,3vw,36px);display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-top:14px}
+.calc label{display:block;font-weight:600;margin-bottom:8px}
+.calc input[type=range]{width:100%;accent-color:var(--acc)}
+.res b{display:block;font:400 clamp(34px,4vw,52px) "Russo One";color:var(--acc)}
+.res small{color:var(--mut)}
+.works{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.w{background:var(--s1);border-radius:18px;padding:18px}.w b{display:block}.w small{color:var(--mut)}
+.w .ic{font:400 30px "Russo One";color:var(--acc)}
+.cta{background:var(--acc);color:#111;border-radius:28px;margin-top:clamp(70px,9vw,120px);padding:clamp(28px,5vw,56px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.cta h2{margin:0}.cta .btn{background:#111;color:var(--acc)}
+footer{padding:28px 0 100px;color:var(--mut);font-size:14px}
+.sticky{position:fixed;left:12px;right:12px;bottom:12px;display:none;gap:8px;z-index:20}.sticky .btn{flex:1}
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.js .rv.in{opacity:1;transform:none}
+@media(max-width:900px){.hero,.calc{grid-template-columns:1fr}.tech,.works{grid-template-columns:1fr 1fr}.sticky{display:flex}nav .tel{display:none}}
+@media(max-width:520px){.tech,.works{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><div class="logo">ТЕХ<b>ПОМОЩЬ</b></div><a class="tel" href="tel:+70000000000">+7 000 000-00-00</a><a class="btn" href="#calc">Рассчитать</a></nav>
+<header class="hero">
+ <div>
+  <h1>Эвакуатор, манипулятор и экскаватор - <span>приедем за 40 минут</span></h1>
+  <p class="lead">Эвакуируем легковые и коммерческие авто, перевезём груз манипулятором, выкопаем траншею или котлован экскаватором-погрузчиком. Работаем круглосуточно.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="tel:+70000000000">Позвонить</a><a class="btn g" href="#calc">Узнать цену</a></div>
+  <p class="eta">Сейчас свободна техника: <b id="free">эвакуатор, манипулятор</b></p>
+ </div>
+ <div class="scene rv"><svg viewBox="0 0 500 400" aria-label="Эвакуатор с манипулятором">
+  <rect width="500" height="400" fill="#1c1d1f"/>
+  <line x1="0" y1="330" x2="500" y2="330" stroke="#3a3c40" stroke-width="4"/>
+  <line class="road" x1="0" y1="360" x2="500" y2="360" stroke="#55575b" stroke-width="5" stroke-dasharray="40 40"/>
+  <g class="truck">
+   <rect x="60" y="230" width="260" height="60" rx="6" fill="#2b2d31"/>
+   <rect x="320" y="200" width="110" height="90" rx="10" fill="#ffc21a"/>
+   <rect x="345" y="214" width="62" height="34" rx="4" fill="#1c1d1f"/>
+   <rect x="80" y="196" width="150" height="34" rx="6" fill="#d9dbdd"/><rect x="110" y="180" width="80" height="20" rx="6" fill="#d9dbdd"/>
+   <circle cx="110" cy="296" r="24" fill="#111" stroke="#55575b" stroke-width="6"/><circle cx="270" cy="296" r="24" fill="#111" stroke="#55575b" stroke-width="6"/><circle cx="380" cy="296" r="24" fill="#111" stroke="#55575b" stroke-width="6"/>
+   <g class="arm"><rect x="250" y="196" width="90" height="14" rx="4" fill="#ffc21a" transform="rotate(-24 330 205)"/><line x1="258" y1="168" x2="258" y2="196" stroke="#d9dbdd" stroke-width="3"/></g>
+  </g>
+ </svg></div>
+</header>
+
+<section id="calc">
+ <h2 class="rv">Техника и цены</h2><p class="sub rv">Выберите технику - калькулятор пересчитает стоимость.</p>
+ <div class="tech rv" id="tech"></div>
+ <div class="calc rv">
+  <div><label for="km">Расстояние / время работы: <span id="kv">20 км</span></label><input type="range" id="km" min="5" max="100" value="20"><p style="color:var(--mut);margin-top:10px;font-size:15px">Цена включает подачу по городу. Точную сумму назовём по телефону за минуту.</p></div>
+  <div class="res"><small>Ориентир</small><b id="sum"></b><a class="btn" href="tel:+70000000000" style="margin-top:12px">Вызвать технику</a></div>
+ </div>
+</section>
+
+<section>
+ <h2 class="rv">Чем помогаем</h2>
+ <div class="works">
+  <div class="w rv"><div class="ic">01</div><b>ДТП и поломка</b><small>Эвакуируем на СТО или стоянку</small></div>
+  <div class="w rv"><div class="ic">02</div><b>Стройматериалы</b><small>Блоки, плиты, контейнеры манипулятором</small></div>
+  <div class="w rv"><div class="ic">03</div><b>Траншеи и котлованы</b><small>Экскаватор-погрузчик под фундамент, сети</small></div>
+  <div class="w rv"><div class="ic">04</div><b>Спецтехника</b><small>Перевозка мини-техники и прицепов</small></div>
+ </div>
+</section>
+
+<div class="cta rv"><h2>Нужна техника сейчас?</h2><a class="btn" href="tel:+70000000000">Позвонить</a></div>
+</div>
+<div class="wrap"><footer>Демо лендинга: телефон, цены и время подачи условные - в работе будут ваши данные. Заявки - в CRM, звонки - с целями в Метрике для Директа.</footer></div>
+<div class="sticky"><a class="btn" href="tel:+70000000000">Позвонить</a><a class="btn g" href="#calc">Цена</a></div>
+<script>
+document.documentElement.classList.add('js');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(x=>io.observe(x));
+const T=[['Эвакуатор',[['Грузоподъёмность','до 3,5 т'],['Платформа','6 м'],['Подача','от 40 мин']],2500,60,'км'],['Манипулятор',[['Борт','до 7 т'],['Стрела','до 3 т, вылет 9 м'],['Подача','от 60 мин']],3500,90,'км'],['Экскаватор-погрузчик',[['Копание','до 5,8 м'],['Ковш','1 м³'],['Минимальный заказ','4 часа']],2800,2800,'ч']];
+let cur=0;const tech=document.getElementById('tech');
+tech.innerHTML=T.map(([n,s,b],i)=>`<div class="t${i?'':' on'}" data-i="${i}"><b>${n}</b><ul>${s.map(([k,v])=>`<li>${k}: <span>${v}</span></li>`).join('')}</ul><div class="pr">от ${b.toLocaleString('ru-RU')} ₽</div></div>`).join('');
+tech.onclick=e=>{const c=e.target.closest('.t');if(!c)return;cur=+c.dataset.i;[...tech.children].forEach(x=>x.classList.toggle('on',x===c));const km=document.getElementById('km');if(T[cur][4]==='ч'){km.min=4;km.max=12;km.value=4}else{km.min=5;km.max=100;km.value=20}calc()};
+function calc(){const v=+document.getElementById('km').value,t=T[cur];document.getElementById('kv').textContent=v+(t[4]==='ч'?' ч':' км');const s=t[4]==='ч'?t[3]*v:t[2]+Math.max(0,v-10)*t[3];document.getElementById('sum').textContent=Math.round(s).toLocaleString('ru-RU')+' ₽'}
+document.getElementById('km').oninput=calc;calc();
+</script>
+</body>
+</html>
